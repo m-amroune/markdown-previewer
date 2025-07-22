@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 1rem;
+}
+
+textarea {
+  display: block;          
+  margin: 0 auto;           
+  max-width: 600px;         
+  width: 100%;              
+}
+
+
