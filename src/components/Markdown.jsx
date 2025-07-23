@@ -1,9 +1,13 @@
 import React from 'react'
 import { marked } from 'marked'
+import DOMPurify from 'dompurify';
 import { useState } from 'react';
 
 const Markdown = () => {
-    
+    marked.setOptions({
+  breaks: true,
+  gfm: true
+});
     const templateMarkdown = `
     
 # Welcome to my React Markdown Previewer!
@@ -54,11 +58,11 @@ And here. | Okay. | I think we get it.
     `
     const [markdown, setMarkdown] = useState(templateMarkdown);
 
-
+const cleanHTML = DOMPurify.sanitize(marked(markdown));
   return (
     <div>
       <textarea  id="editor" value={markdown}  onChange={(e) => setMarkdown(e.target.value)} />
-      <div id="preview"    dangerouslySetInnerHTML={{ __html: marked(markdown) }} ></div>
+      <div id="preview"    dangerouslySetInnerHTML={{ __html: cleanHTML }} ></div>
     </div>
   )
 }
